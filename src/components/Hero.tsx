@@ -18,11 +18,11 @@ const Hero = () => {
 						much more.
 					</h4>
 					<div className="flex gap-5 sm:justify-start justify-center">
-						<button className="flex items-center gap-2 rounded font-bold bg-brand text-white py-4 px-7 shadow-[0_10px_15px_0_rgba(255,83,48,0.35)] ">
+						<button className="primary-btn bg-brand py-4 px-7 shadow-btn">
 							<span className="min-w-max">Book Ride</span>
 							<CiCircleCheck size={24} style={{ strokeWidth: '1' }} />
 						</button>
-						<button className="flex items-center gap-2 rounded font-bold bg-black text-white py-4 px-7">
+						<button className="primary-btn bg-black py-4 px-7">
 							<span className="min-w-max"> Learn More</span>
 							<MdArrowForwardIos />
 						</button>
