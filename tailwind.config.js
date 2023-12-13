@@ -6,6 +6,9 @@ export default {
 			colors: {
 				brand: '#FF4D30',
 			},
+			screens: {
+				xsm: '576px',
+			},
 		},
 	},
 	plugins: [],
