@@ -32,10 +32,14 @@ body {
 
 @layer components {
 	.primary-btn {
-		@apply flex items-center gap-2 rounded font-bold text-white;
+		@apply flex items-center justify-center gap-2 rounded font-bold text-white;
 	}
 
 	.shadow-btn {
 		@apply shadow-[0_10px_15px_0_rgba(255,83,48,0.35)];
+	}
+
+	.hover-btn {
+		@apply hover:text-brand transition-colors;
 	}
 }
