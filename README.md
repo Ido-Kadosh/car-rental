@@ -1,1 +1,1 @@
-Car Rental Frontend app with react and tailwind
+Car Rental Frontend app demo with react and tailwind
