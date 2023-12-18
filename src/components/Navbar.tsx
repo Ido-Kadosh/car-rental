@@ -19,11 +19,11 @@ const Navbar = () => {
 				</div>
 				<NavLinks />
 				<div className="lg:flex gap-4 hidden">
-					<button className="hover-btn">Sign in</button>
+					<button className="hover-link">Sign in</button>
 					<button className="primary-btn bg-brand px-7 py-3 shadow-btn">Register</button>
 				</div>
 				<button
-					className="lg:hidden flex hover-btn"
+					className="lg:hidden flex hover-link"
 					onClick={() => {
 						setIsMobileOpen(prev => !prev)
 					}}
@@ -36,7 +36,7 @@ const Navbar = () => {
 					isMobileOpen ? 'left-0' : '-left-full'
 				} `}
 			>
-				<button onClick={closeMobileNavbar} className="absolute top-10 right-10 hover-btn">
+				<button onClick={closeMobileNavbar} className="absolute top-10 right-10 hover-link">
 					<RiCloseFill size={30} />
 				</button>
 				<NavLinks isMobile closeMobileNavbar={closeMobileNavbar} />
@@ -59,36 +59,36 @@ const NavLinks = ({ isMobile, closeMobileNavbar }: PropTypes) => {
 		<nav className={`${isMobile ? 'flex flex-col gap-10 text-center' : 'lg:block gap-5 hidden'}`}>
 			<ul className={`flex gap-5 ${isMobile ? 'flex-col' : ''} `}>
 				<li>
-					<NavLink to="/" className={`hover-btn ${isMobile ? 'text-3xl' : ''}`} onClick={handleClick}>
+					<NavLink to="/" className={`hover-link ${isMobile ? 'text-3xl' : ''}`} onClick={handleClick}>
 						Home
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to="/about" className={`hover-btn ${isMobile ? 'text-3xl' : ''}`} onClick={handleClick}>
+					<NavLink to="/about" className={`hover-link ${isMobile ? 'text-3xl' : ''}`} onClick={handleClick}>
 						About
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to="/models" className={`hover-btn ${isMobile ? 'text-3xl' : ''}`} onClick={handleClick}>
+					<NavLink to="/models" className={`hover-link ${isMobile ? 'text-3xl' : ''}`} onClick={handleClick}>
 						Vehicle Models
 					</NavLink>
 				</li>
 				<li>
 					<NavLink
 						to="/testimonials"
-						className={`hover-btn ${isMobile ? 'text-3xl' : ''}`}
+						className={`hover-link ${isMobile ? 'text-3xl' : ''}`}
 						onClick={handleClick}
 					>
 						Testimonials
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to="/team" className={`hover-btn ${isMobile ? 'text-3xl' : ''}`} onClick={handleClick}>
+					<NavLink to="/team" className={`hover-link ${isMobile ? 'text-3xl' : ''}`} onClick={handleClick}>
 						Our Team
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to="/contact" className={`hover-btn ${isMobile ? 'text-3xl' : ''}`} onClick={handleClick}>
+					<NavLink to="/contact" className={`hover-link ${isMobile ? 'text-3xl' : ''}`} onClick={handleClick}>
 						Contact
 					</NavLink>
 				</li>
