@@ -9,6 +9,9 @@ export default {
 			screens: {
 				xsm: '576px',
 			},
+			backgroundImage: {
+				'book-bg': "url('/src/assets/img/book-bg.png')",
+			},
 		},
 	},
 	plugins: [],
