@@ -14,11 +14,12 @@
 	font-family: Rubik, sans-serif;
 	line-height: 1.5;
 	font-weight: 400;
-
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+
+	--brand: #ff4d30;
 }
 
 body {
@@ -30,6 +31,15 @@ body {
 	min-height: 100vh;
 }
 
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--brand);
+	border-radius: 20px;
+}
+
 @layer components {
 	.primary-btn {
 		@apply flex items-center justify-center gap-2 rounded font-bold text-white;
@@ -39,7 +49,7 @@ body {
 		@apply shadow-[0_10px_15px_0_rgba(255,83,48,0.35)];
 	}
 
-	.hover-btn {
+	.hover-link {
 		@apply hover:text-brand transition-colors;
 	}
 }
