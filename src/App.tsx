@@ -1,15 +1,16 @@
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import Footer from './components/Footer'
 import Navbar from './components/Navbar'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Home from './pages/Home'
 import About from './pages/About'
-import Models from './pages/Models'
-import Testimonials from './pages/Testimonials'
-import Team from './pages/Team'
 import Contact from './pages/Contact'
+import Home from './pages/Home'
+import Models from './pages/Models'
+import Team from './pages/Team'
+import Testimonials from './pages/Testimonials'
 
 const App = () => {
 	return (
-		<main className="main-app">
+		<main className="main-app w-full">
 			<Router>
 				<Navbar />
 				<Routes>
@@ -20,6 +21,7 @@ const App = () => {
 					<Route path="/team" element={<Team />}></Route>
 					<Route path="/contact" element={<Contact />}></Route>
 				</Routes>
+				<Footer />
 			</Router>
 		</main>
 	)
