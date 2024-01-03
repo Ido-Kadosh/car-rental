@@ -2,9 +2,9 @@ import { LuPhoneCall } from 'react-icons/lu'
 import { FaRegEnvelope } from 'react-icons/fa'
 
 import { HashLink } from 'react-router-hash-link'
-const Footer = () => {
+export const Footer = () => {
 	return (
-		<footer className="grid grid-cols-1 m-auto text-center sm:text-left sm:grid-cols-2 xl:grid-cols-4 max-w-7xl gap-20 py-24 px-6 font-poppins">
+		<footer className="grid grid-cols-1 m-auto text-center sm:text-start sm:grid-cols-2 xl:grid-cols-4 max-w-7xl gap-20 py-24 px-6 font-poppins">
 			<div className="flex flex-col">
 				<h2 className="text-2xl mb-6">
 					<span className="font-bold">CAR</span> Rental
@@ -90,5 +90,3 @@ const Footer = () => {
 		</footer>
 	)
 }
-
-export default Footer
