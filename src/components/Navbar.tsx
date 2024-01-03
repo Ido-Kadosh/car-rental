@@ -1,38 +1,53 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { RiCloseFill, RiMenuLine } from 'react-icons/ri'
 import { NavLink } from 'react-router-dom'
 import logo from '../assets/img/logo.png'
-import { RiMenuLine } from 'react-icons/ri'
-import { RiCloseFill } from 'react-icons/ri'
 
-const Navbar = () => {
+export const Navbar = () => {
 	const [isMobileOpen, setIsMobileOpen] = useState(false)
+	const [isScrolled, setIsScrolled] = useState(false)
 
+	useEffect(() => {
+		const handleScroll = () => {
+			setIsScrolled(window.scrollY > 0)
+		}
+
+		window.addEventListener('scroll', handleScroll)
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll)
+		}
+	}, [])
+	const scrollUp = () => {
+		window.scrollTo({ top: 0, behavior: 'smooth' })
+	}
 	const closeMobileNavbar = () => {
 		setIsMobileOpen(false)
 	}
-
 	return (
 		<>
-			<div className="flex absolute py-6 px-5 left-0 right-0 m-auto max-w-7xl justify-between items-center w-full font-medium">
-				<div>
-					<img src={logo} alt="" className="w-40" />
+			<div className={`w-full fixed py-6 px-5 z-[9999]  ${isScrolled ? 'bg-white shadow-md' : ''}`}>
+				<div className="flex main-content left-0 right-0 justify-between font-medium">
+					<div>
+						<img src={logo} alt="" className="w-40" />
+					</div>
+					<NavLinks />
+					<div className="lg:flex gap-4 hidden">
+						<button className="hover-link">Sign in</button>
+						<button className="primary-btn bg-brand px-7 py-3 shadow-btn">Register</button>
+					</div>
+					<button
+						className="lg:hidden flex hover-link"
+						onClick={() => {
+							setIsMobileOpen(prev => !prev)
+						}}
+					>
+						<RiMenuLine size={30} style={{ strokeWidth: '0.3' }} />
+					</button>
 				</div>
-				<NavLinks />
-				<div className="lg:flex gap-4 hidden">
-					<button className="hover-link">Sign in</button>
-					<button className="primary-btn bg-brand px-7 py-3 shadow-btn">Register</button>
-				</div>
-				<button
-					className="lg:hidden flex hover-link"
-					onClick={() => {
-						setIsMobileOpen(prev => !prev)
-					}}
-				>
-					<RiMenuLine size={30} style={{ strokeWidth: '0.3' }} />
-				</button>
 			</div>
 			<nav
-				className={`flex justify-center h-screen w-full fixed flex-col items-center bg-white transition-all duration-500 ${
+				className={`flex justify-center h-screen w-full fixed z-[99999] flex-col items-center bg-white transition-all duration-500 ${
 					isMobileOpen ? 'left-0' : '-left-full'
 				} `}
 			>
@@ -41,6 +56,14 @@ const Navbar = () => {
 				</button>
 				<NavLinks isMobile closeMobileNavbar={closeMobileNavbar} />
 			</nav>
+			<div
+				onClick={scrollUp}
+				className={`fixed text-5xl cursor-pointer primary-btn bg-brand w-10 h-10 right-5 bottom-5 ${
+					isScrolled ? '' : 'hidden'
+				}`}
+			>
+				<span className="absolute top-3 ">^</span>
+			</div>
 		</>
 	)
 }
@@ -61,11 +84,6 @@ const NavLinks = ({ isMobile, closeMobileNavbar }: PropTypes) => {
 				<li>
 					<NavLink to="/" className={`hover-link ${isMobile ? 'text-3xl' : ''}`} onClick={handleClick}>
 						Home
-					</NavLink>
-				</li>
-				<li>
-					<NavLink to="/about" className={`hover-link ${isMobile ? 'text-3xl' : ''}`} onClick={handleClick}>
-						About
 					</NavLink>
 				</li>
 				<li>
@@ -96,5 +114,3 @@ const NavLinks = ({ isMobile, closeMobileNavbar }: PropTypes) => {
 		</nav>
 	)
 }
-
-export default Navbar
