@@ -10,7 +10,8 @@ export default {
 				xsm: '576px',
 			},
 			backgroundImage: {
-				'book-bg': "url('/src/assets/img/book-bg.png')",
+				bread: "url('/src/assets/img/bread-bg.png')",
+				'get-in-touch': "url('/src/assets/img/get-in-touch-bg.png')",
 			},
 		},
 	},
