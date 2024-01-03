@@ -31,6 +31,14 @@ body {
 	min-height: 100vh;
 }
 
+#root {
+	width: 100%;
+}
+
+img {
+	display: block;
+}
+
 ::-webkit-scrollbar {
 	width: 10px;
 }
@@ -52,4 +60,26 @@ body {
 	.hover-link {
 		@apply hover:text-brand transition-colors;
 	}
+
+	.main-content {
+		@apply max-w-7xl items-center m-auto;
+	}
+
+	.active-question {
+		@apply max-h-[50rem] py-7;
+	}
+}
+
+/* CSS that tailwind can't solve */
+
+.choose-car {
+	background-position: -14rem 13rem;
+}
+
+.frequently-asked {
+	background-position: 0 70%;
+}
+
+.bread-crumbs {
+	background-position: 50%;
 }
