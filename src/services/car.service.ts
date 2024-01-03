@@ -4,72 +4,90 @@ import { Car } from '../interfaces/Car'
 
 import { utilService } from './util.service'
 
-const _createCar = (car: Car) => {
-	return new Car(car._id, car.model, car.imgUrl, car.price, car.transmission)
-}
-
 //creating demo data
-const _createCars = () => {
+const _createCars = (): Car[] => {
 	return [
-		_createCar({
+		{
 			_id: utilService.makeId(),
-			model: 'Audi A1',
-			imgUrl: '',
+			name: 'Audi A1',
+			model: 'A1',
+			make: 'Audi',
+			imgUrl: 'https://res.cloudinary.com/diyikz4gq/image/upload/v1703424169/rk3fbzpdof2heofjfrqt.png',
 			price: 45,
+			year: 2022,
+			fuelType: 'gasoline',
 			transmission: 'manual',
-		}),
-		_createCar({
+		},
+		{
 			_id: utilService.makeId(),
-			model: 'VW Golf 6',
-			imgUrl: '',
+			name: 'VW Golf 6',
+			model: 'golf 6',
+			make: 'Volkswagen',
+			imgUrl: 'https://res.cloudinary.com/diyikz4gq/image/upload/v1703424169/nuhyucr6ilj7mk15bkmc.png',
 			price: 37,
+			year: 2021,
+			fuelType: 'diesel',
 			transmission: 'manual',
-		}),
-		_createCar({
+		},
+		{
 			_id: utilService.makeId(),
-			model: 'Toyota Camry',
-			imgUrl: '',
+			name: 'Toyota Camry',
+			model: 'Camry',
+			make: 'Toyota',
+			imgUrl: 'https://res.cloudinary.com/diyikz4gq/image/upload/v1703424169/phl4pt2umiperhq03hwd.png',
 			price: 30,
+			year: 2023,
+			fuelType: 'hybrid',
 			transmission: 'automatic',
-		}),
-		_createCar({
+		},
+		{
 			_id: utilService.makeId(),
-			model: 'BMW 320 ModernLine',
-			imgUrl: '',
+			name: 'BMW 320 ModernLine',
+			model: '320',
+			make: 'BMW',
+			imgUrl: 'https://res.cloudinary.com/diyikz4gq/image/upload/v1703424169/wboi0enj6gh5wldzfetu.png',
 			price: 35,
+			year: 2019,
+			fuelType: 'diesel',
 			transmission: 'manual',
-		}),
-		_createCar({
+		},
+		{
 			_id: utilService.makeId(),
-			model: 'Mercedes-Benz GLK',
-			imgUrl: '',
+			name: 'Mercedes-Benz GLK',
+			model: 'GLK',
+			make: 'Mercedes-Benz',
+			imgUrl: 'https://res.cloudinary.com/diyikz4gq/image/upload/v1703424169/rskudc6g6mk4zj9sryfx.png',
 			price: 50,
+			year: 2024,
+			fuelType: 'diesel',
 			transmission: 'manual',
-		}),
-		_createCar({
+		},
+		{
 			_id: utilService.makeId(),
-			model: 'VW Passat CC',
-			imgUrl: '',
+			name: 'VW Passat CC',
+			model: 'Passat CC',
+			make: 'Volkswagen',
+			imgUrl: 'https://res.cloudinary.com/diyikz4gq/image/upload/v1703424169/ezxqyfdqy3tnagckkbsr.png',
 			price: 25,
+			year: 2016,
+			fuelType: 'gasoline',
 			transmission: 'automatic',
-		}),
+		},
 	]
 }
 
 const cars = _createCars()
 
-//usually comes from server, so we return as async
+//usually comes from server, so we return as async. delay used to mimic server.
 const query = async (): Promise<Car[]> => {
 	return new Promise(res => {
 		setTimeout(() => {
 			res(cars)
-		}, 2000)
+		}, 100)
 	})
 }
 
-//value will be id in the future
-const getCarOptions = async (): Promise<SelectOption[]> => {
-	const cars = await query()
+const getCarOptions = (cars: Car[]): SelectOption[] => {
 	return cars.map(car => ({ value: car._id, txt: car.model }))
 }
 
@@ -83,7 +101,13 @@ const getLocationOptions = (): SelectOption[] => {
 }
 
 const getEmptyCar = () => {
-	return new Car()
+	return {
+		_id: '',
+		model: '',
+		imgUrl: '',
+		price: 25,
+		transmission: 'automatic',
+	}
 }
 
 const getEmptyBookInfo = () => {

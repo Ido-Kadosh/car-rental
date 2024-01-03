@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react'
-import CustomSelect from './Select'
+import { Select } from './Select'
 import { SelectOption } from './Select'
 import { carService } from '../services/car.service'
+import { useSelector } from 'react-redux'
+import { RootState } from '../redux/store'
 
 const locationOptions: SelectOption[] = carService.getLocationOptions()
-const BookCar = () => {
+export const BookCar = () => {
 	const [bookInfo, setBookInfo] = useState(carService.getEmptyBookInfo())
 	const [carOptions, setCarOptions] = useState<SelectOption[]>()
+	const { cars } = useSelector((state: RootState) => state.cars)
 	const handleSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
 		ev.preventDefault()
-		console.log(bookInfo)
 		//TODO open modal
 	}
 
@@ -17,8 +19,8 @@ const BookCar = () => {
 		getCarOptions()
 	}, [])
 
-	const getCarOptions = async () => {
-		const options = await carService.getCarOptions()
+	const getCarOptions = () => {
+		const options = carService.getCarOptions(cars)
 		setCarOptions(options)
 	}
 
@@ -34,14 +36,14 @@ const BookCar = () => {
 	}
 
 	return (
-		<div className="bg-book-bg p-10 shadow-[0_10px_20px_0_rgba(0,0,0,.1)]">
+		<div id="book" className="bg-book p-10 max-w-7xl m-auto shadow-[0_10px_20px_0_rgba(0,0,0,.1)] mb-40">
 			<h2 className="font-bold text-2xl mb-4">Book a car</h2>
 			<form onSubmit={handleSubmit} className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
 				<div className="flex flex-col">
 					<label className="font-semibold mb-3" htmlFor="carId">
 						Select your car type
 					</label>
-					<CustomSelect
+					<Select
 						value={bookInfo.carId}
 						onChange={handleChange}
 						name="carId"
@@ -53,7 +55,7 @@ const BookCar = () => {
 					<label className="font-semibold mb-3" htmlFor="pickUpLoc">
 						Pick-up Location
 					</label>
-					<CustomSelect
+					<Select
 						value={bookInfo.pickUpLoc}
 						onChange={handleChange}
 						name="pickUpLoc"
@@ -65,7 +67,7 @@ const BookCar = () => {
 					<label className="font-semibold mb-3" htmlFor="dropOffLoc">
 						Drop-off Location
 					</label>
-					<CustomSelect
+					<Select
 						value={bookInfo.dropOffLoc}
 						onChange={handleChange}
 						name="dropOffLoc"
@@ -104,5 +106,3 @@ const BookCar = () => {
 		</div>
 	)
 }
-
-export default BookCar

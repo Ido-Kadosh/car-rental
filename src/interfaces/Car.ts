@@ -1,9 +1,11 @@
-export class Car {
-	constructor(
-		public _id: string = '',
-		public model: string = '',
-		public imgUrl: string = '',
-		public price: number = 0,
-		public transmission: 'manual' | 'automatic' = 'manual'
-	) {}
+export interface Car {
+	_id: string
+	name: string
+	model: string
+	make: string
+	imgUrl: string
+	price: number
+	year: number
+	fuelType: 'gasoline' | 'diesel' | 'hybrid'
+	transmission: 'manual' | 'automatic'
 }
