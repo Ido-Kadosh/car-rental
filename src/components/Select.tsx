@@ -13,12 +13,12 @@ interface propTypes {
 	placeholder?: string
 }
 
-/**CustomSelect renders an html select element
+/**Select renders an html select element
  *
  * @component
  * @example
  * //Usage Example:
- * <CustomSelect name="letter" options={options} placeholder="Select letter" />
+ * <Select name="letter" options={options} placeholder="Select letter" />
  *
  * @param {Object} props - The component props.
  * @param {String} props.name - The name and id for the select element, to be used with label.
@@ -29,7 +29,7 @@ interface propTypes {
  * @param {String} [props.placeholder] - An optional placeholder for the select element.
  * @returns {JSX.Element} JSX element representing the custom select.
  */
-const CustomSelect = ({ name, value, onChange, options, className, placeholder }: propTypes): JSX.Element => {
+export const Select = ({ name, value, onChange, options, className, placeholder }: propTypes): JSX.Element => {
 	if (!options)
 		return (
 			<select disabled value="" className={className ?? 'text-zinc-500 border p-3'}>
@@ -59,5 +59,3 @@ const CustomSelect = ({ name, value, onChange, options, className, placeholder }
 		</select>
 	)
 }
-
-export default CustomSelect
