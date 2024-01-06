@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Select } from './Select'
 import { SelectOption } from './Select'
 import { carService } from '../services/car.service'
@@ -8,20 +8,12 @@ import { RootState } from '../redux/store'
 const locationOptions: SelectOption[] = carService.getLocationOptions()
 export const BookCar = () => {
 	const [bookInfo, setBookInfo] = useState(carService.getEmptyBookInfo())
-	const [carOptions, setCarOptions] = useState<SelectOption[]>()
 	const { cars } = useSelector((state: RootState) => state.cars)
+	const carOptions = useMemo(() => carService.getCarOptions(cars), [cars])
+
 	const handleSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
 		ev.preventDefault()
 		//TODO open modal
-	}
-
-	useEffect(() => {
-		getCarOptions()
-	}, [])
-
-	const getCarOptions = () => {
-		const options = carService.getCarOptions(cars)
-		setCarOptions(options)
 	}
 
 	const handleChange = (ev: React.ChangeEvent<HTMLSelectElement>) => {
